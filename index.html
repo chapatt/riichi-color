@@ -4,7 +4,7 @@
   <script>
     function setColorVar(color, value, setQuery = true) {
       document.querySelector(':root').style.setProperty(`--${color}`, value);
-      setQuery && setQueryParam(color, value);
+      setQuery && setQueryParam(color, value.substring(1));
     }
 
     function setQueryParam(key, value) {
@@ -18,7 +18,7 @@
       const searchParams = new URLSearchParams(window.location.search);
       ['bg', 'beige', 'yellow', 'brightRed', 'red', 'green', 'blue', 'black'].forEach(color => {
         value = searchParams.get(color);
-        value && setColorVar(color, value, false);
+        value && setColorVar(color, `#${value}`, false);
       });
     }
 
